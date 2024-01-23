@@ -115,8 +115,9 @@ removeFalsyValues([0, false, 'cat', NaN, true, '']);
  *    getStringsLength([ '', 'a', 'bc', 'def', 'ghij' ]) => [ 0, 1, 2, 3, 4 ]
  *    getStringsLength([ 'angular', 'react', 'ember' ]) => [ 7, 5, 5 ]
  */
-function getStringsLength(/* arr */) {
-  throw new Error('Not implemented');
+function getStringsLength(arr) {
+  const result = arr.map((item) => item.length);
+  return result;
 }
 
 /**
@@ -133,8 +134,14 @@ function getStringsLength(/* arr */) {
  *   getAverage([ 1, 10, 100, 1000 ])  => 277,75
  *   getAverage([ 2, 3, 3 ])  => 2,67
  */
-function getAverage(/* arr */) {
-  throw new Error('Not implemented');
+function getAverage(arr) {
+  if (arr.length === 0) {
+    return 0;
+  }
+
+  const sumAllItem = arr.reduce((acc, item) => acc + item);
+  const average = (sumAllItem / arr.length).toFixed(2);
+  return parseFloat(average);
 }
 
 /**
@@ -147,10 +154,14 @@ function getAverage(/* arr */) {
  *    isSameLength(['orange', 'banana', 'cherry']) => true
  *    isSameLength(['cat', 'dog', 'elephant']) => false
  */
-function isSameLength(/* arr */) {
-  throw new Error('Not implemented');
-}
+function isSameLength(arr) {
+  const arrItemsLength = arr.map((item) => item.length);
+  const isLenthSame = (value) => value.length === arrItemsLength[0];
 
+  const result = arr.every(isLenthSame);
+  return result;
+}
+isSameLength(['orange', 'banana', 'cherry']);
 /**
  * Checks if there are elements in the array where the value is equal to its index.
  *
