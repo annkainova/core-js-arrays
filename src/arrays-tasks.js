@@ -521,7 +521,6 @@ function findLongestIncreasingSubsequence(/* nums */) {
 function propagateItemsByPositionIndex(arr) {
   const result = arr.reduce((acc, element, index) => {
     acc.push(new Array(index + 1).fill(element));
-    console.log(acc);
     return acc;
   }, []);
 
