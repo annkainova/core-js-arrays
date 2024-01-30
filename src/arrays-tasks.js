@@ -475,8 +475,6 @@ function getMaxItems(arr, n) {
   return maxItem;
 }
 
-getMaxItems([2, 3, 1], 2);
-
 /**
  * Finds and returns an array containing only the common elements found in two arrays.
  *
@@ -597,7 +595,6 @@ function sortDigitNamesByNumericOrder(arr) {
   result.sort();
   return result.map((item) => number.at(item));
 }
-sortDigitNamesByNumericOrder(['nine', 'eight', 'nine', 'eight']);
 
 /**
  * Swaps the head and tail of the specified array:
