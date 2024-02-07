@@ -422,9 +422,21 @@ function getFalsyValuesCount(/* arr */) {
  *                              [0,0,0,1,0],
  *                              [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  const matrix = new Array(n).fill([]);
+  let row;
+
+  matrix.map((arr, index) => {
+    row = new Array(n).fill(0);
+    row[index] = 1;
+    matrix[index] = row;
+    return arr;
+  });
+
+  return matrix;
 }
+
+getIdentityMatrix(2);
 
 /**
  * Returns an array containing indices of odd elements in the input array.
@@ -437,9 +449,16 @@ function getIdentityMatrix(/* n */) {
  *    getIndicesOfOddNumbers([2, 4, 6, 8, 10]) => []
  *    getIndicesOfOddNumbers([11, 22, 33, 44, 55]) => [0, 2, 4]
  */
-function getIndicesOfOddNumbers(/* numbers */) {
-  throw new Error('Not implemented');
+function getIndicesOfOddNumbers(numbers) {
+  const result = numbers.reduce((acc, number, index) => {
+    if (number % 2 !== 0) {
+      acc.push(index);
+    }
+    return acc;
+  }, []);
+  return result;
 }
+getIndicesOfOddNumbers([1, 2, 3, 4, 5]);
 
 /**
  * Returns the array of RGB Hex strings from the specified array of numbers.
@@ -451,10 +470,27 @@ function getIndicesOfOddNumbers(/* numbers */) {
  *    getHexRGBValues([ 0, 255, 16777215]) => [ '#000000', '#0000FF', '#FFFFFF' ]
  *    getHexRGBValues([]) => []
  */
-function getHexRGBValues(/* arr */) {
-  throw new Error('Not implemented');
-}
+function getHexRGBValues(arr) {
+  const result = arr.map((number) => {
+    const to16Number = number.toString(16).toUpperCase();
+    if (to16Number.length < 6) {
+      const lengthArray = 6 - to16Number.length;
+      const HEX = ['#', ...new Array(lengthArray)];
+      HEX.fill(0, 1, lengthArray + 1);
+      HEX.push(to16Number);
+      const HEXString = HEX.join('');
 
+      return HEXString;
+    }
+    const HEX = ['#'];
+    HEX.push(to16Number);
+    const HEXString = HEX.join('');
+
+    return HEXString;
+  });
+  return result;
+}
+getHexRGBValues([0, 255, 16777215]);
 /**
  * Returns the n largest values from the specified array
  *
