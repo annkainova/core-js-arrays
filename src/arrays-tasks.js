@@ -288,8 +288,14 @@ function distinct(arr) {
  *    createNDimensionalArray(4, 2) => [[[[0, 0], [0, 0]], [[0, 0], [0, 0]]], [[[0, 0], [0, 0]], [[0, 0], [0, 0]]]]
  *    createNDimensionalArray(1, 1) => [0]
  */
-function createNDimensionalArray(/* n, size */) {
-  throw new Error('Not implemented');
+function createNDimensionalArray(n, size) {
+  if (n === 1) {
+    return new Array(size).fill(0);
+  }
+  return Array.from({ length: size }).reduce((acc) => {
+    acc.push(createNDimensionalArray(n - 1, size));
+    return acc;
+  }, []);
 }
 
 /**
@@ -620,10 +626,24 @@ function propagateItemsByPositionIndex(arr) {
  *    shiftArray(['a', 'b', 'c', 'd'], -1) => ['b', 'c', 'd', 'a']
  *    shiftArray([10, 20, 30, 40, 50], -3) => [40, 50, 10, 20, 30]
  */
-function shiftArray(/* arr, n */) {
-  throw new Error('Not implemented');
-}
+function shiftArray(arr, n) {
+  let result;
+  if (n > 0) {
+    const partArr = arr.slice(-n);
+    arr.unshift(partArr);
+    result = arr.flat().slice(0, -n);
+  }
+  if (n < 0) {
+    const partArr = arr.slice(0, -n);
 
+    arr.push(partArr);
+    result = arr.flat().slice(-n);
+  }
+
+  return result;
+}
+shiftArray([10, 20, 30, 40, 50], -3);
+shiftArray(['a', 'b', 'c', 'd'], -1);
 /**
  * Sorts digit names.
  *
