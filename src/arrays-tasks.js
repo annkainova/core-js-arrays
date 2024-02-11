@@ -466,8 +466,6 @@ function getIdentityMatrix(n) {
   return matrix;
 }
 
-getIdentityMatrix(2);
-
 /**
  * Returns an array containing indices of odd elements in the input array.
  *
@@ -488,7 +486,6 @@ function getIndicesOfOddNumbers(numbers) {
   }, []);
   return result;
 }
-getIndicesOfOddNumbers([1, 2, 3, 4, 5]);
 
 /**
  * Returns the array of RGB Hex strings from the specified array of numbers.
@@ -520,7 +517,7 @@ function getHexRGBValues(arr) {
   });
   return result;
 }
-getHexRGBValues([0, 255, 16777215]);
+
 /**
  * Returns the n largest values from the specified array
  *
@@ -564,6 +561,7 @@ function findCommonElements(arr1, arr2) {
 
   return result;
 }
+
 /**
  * Finds the length of the longest increasing subsequence of a given array of integers.
  *
@@ -613,6 +611,7 @@ function propagateItemsByPositionIndex(arr) {
 
   return result.flat();
 }
+
 /**
  * Shifts an array by n positions. If n is negative, the array is shifted to the left;
  * if positive, it is shifted to the right.
@@ -642,8 +641,7 @@ function shiftArray(arr, n) {
 
   return result;
 }
-shiftArray([10, 20, 30, 40, 50], -3);
-shiftArray(['a', 'b', 'c', 'd'], -1);
+
 /**
  * Sorts digit names.
  *
@@ -717,8 +715,6 @@ function swapHeadAndTail(arr) {
 
   return result;
 }
-swapHeadAndTail([1, 2]);
-swapHeadAndTail([1, 2, 3, 4, 5]);
 
 module.exports = {
   getIntervalArray,
